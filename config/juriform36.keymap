@@ -1,0 +1,208 @@
+/*
+ * Copyright (c) 2023 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/keys.h>
+
+#define AS(keycode) &as LS(keycode) keycode
+
+#define TK30 &mt LSHIFT ESC
+#define TK31 &mt LGUI SPC
+#define TK32 &mt LCTRL TAB
+#define TK33 &mt LALT ENTER
+#define TK34 &mo 2
+#define TK35 &lt 3 BSPC
+
+
+&caps_word {
+    continue-list = <UNDERSCORE MINUS BSPC>;
+};
+
+/*                KEY POSITIONS
+
+  ╭────────────────────╮ ╭────────────────────╮
+  │  0   1   2   3   4 │ │  5   6   7   8   9 │
+  │ 10  11  12  13  14 │ │ 15  16  17  18  19 │
+  │ 20  21  22  23  24 │ │ 25  26  27  28  29 │
+  ╰───────╮ 30  31  32 │ │ 33  34  35 ╭───────╯
+          ╰────────────╯ ╰────────────╯        */
+
+/ {
+    combos {
+        compatible = "zmk,combos";
+        combo_ae {
+            timeout-ms = <50>;
+            key-positions = <10 20>;
+            bindings = <&ae>;
+        };
+        combo_ae_cap {
+            timeout-ms = <50>;
+            key-positions = <10 20 30>;
+            bindings = <&ae_cap>;
+        };
+        combo_ue {
+            timeout-ms = <50>;
+            key-positions = <6 16>;
+            bindings = <&ue>;
+        };
+        combo_ue_cap {
+            timeout-ms = <50>;
+            key-positions = <6 16 30>;
+            bindings = <&ue_cap>;
+        };
+        combo_oe {
+            timeout-ms = <50>;
+            key-positions = <8 18>;
+            bindings = <&oe>;
+        };
+        combo_oe_cap {
+            timeout-ms = <50>;
+            key-positions = <8 18 30>;
+            bindings = <&oe_cap>;
+        };
+        combo_sz {
+            timeout-ms = <50>;
+            key-positions = <11 21>;
+            bindings = <&sz>;
+        };
+        combo_caps_word {
+            timeout-ms = <50>;
+            key-positions = <30 35>;
+            bindings = <&caps_word>;
+        };
+        combo_meh {
+            timeout-ms = <50>;
+            key-positions = <32 33>;
+            bindings = <&kp LS(LC(LALT))>;
+        };
+        combo_spotlight {
+            timeout-ms = <50>;
+            key-positions = <31 34>;
+            bindings = <&kp LG(SPACE)>;
+        };
+        
+    };
+
+    macros {
+        ae: ae {
+            label = "ä";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =  <&macro_press &kp RALT>,
+                        <&macro_tap &kp U>,
+                        <&macro_release &kp RALT>,
+                        <&macro_tap &kp A>;
+        };
+        ae_cap: ae_cap {
+            label = "Ä";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =  <&macro_press &kp RALT>,
+                        <&macro_tap &kp U>,
+                        <&macro_release &kp RALT>,
+                        <&macro_press &kp LSHIFT>,
+                        <&macro_tap &kp A>,
+                        <&macro_release &kp LSHIFT>;
+        };
+        ue: ue {
+            label = "ü";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =  <&macro_press &kp RALT>,
+                        <&macro_tap &kp U>,
+                        <&macro_release &kp RALT>,
+                        <&macro_tap &kp U>;
+        };
+        ue_cap: ue_cap {
+            label = "Ü";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =  <&macro_press &kp RALT>,
+                        <&macro_tap &kp U>,
+                        <&macro_release &kp RALT>,
+                        <&macro_press &kp LSHIFT>,
+                        <&macro_tap &kp U>,
+                        <&macro_release &kp LSHIFT>;
+        };
+        oe: oe {
+            label = "ö";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =  <&macro_press &kp RALT>,
+                        <&macro_tap &kp U>,
+                        <&macro_release &kp RALT>,
+                        <&macro_tap &kp O>;
+        };
+        oe_cap: oe_cap {
+            label = "Ö";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =  <&macro_press &kp RALT>,
+                        <&macro_tap &kp U>,
+                        <&macro_release &kp RALT>,
+                        <&macro_press &kp LSHIFT>,
+                        <&macro_tap &kp O>,
+                        <&macro_release &kp LSHIFT>;
+        };
+        sz: zs {
+            label = "ß";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =  <&macro_press &kp RALT>,
+                        <&macro_tap &kp S>,
+                        <&macro_release &kp RALT>;
+        };
+    };
+
+    behaviors {
+        as: auto_shift {
+            compatible = "zmk,behavior-hold-tap";
+            label = "AUTO_SHIFT";
+            #binding-cells = <2>;
+            tapping_term_ms = <200>;
+            quick_tap_ms = <0>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+        };
+    };
+
+	keymap {
+		compatible = "zmk,keymap";
+        default_layer_auto_shift {
+            bindings = <
+    AS(Q) AS(W) AS(E) AS(R) AS(T)       AS(Y) AS(U)  AS(I)     AS(O)   AS(P)
+    AS(A) AS(S) AS(D) AS(F) AS(G)       AS(H) AS(J)  AS(K)     AS(L)   AS(SEMI)
+    AS(Z) AS(X) AS(C) AS(V) AS(B)       AS(N) AS(M)  AS(COMMA) AS(DOT) AS(FSLH)
+                TK30  TK31  TK32        TK33  TK34   TK35
+            >;
+        };
+        default_layer {
+            bindings = <
+    &kp Q &kp W &kp E &kp R &kp T       &kp Y &kp U  &kp I     &kp O   &kp P
+    &kp A &kp S &kp D &kp F &kp G       &kp H &kp J  &kp K     &kp L   &kp SEMI
+    &kp Z &kp X &kp C &kp V &kp B       &kp N &kp M  &kp COMMA &kp DOT &kp FSLH
+                TK30  TK31  TK32        TK33  TK34   TK35
+            >;
+        };
+        num_layer {
+            bindings = <
+    AS(N1)    AS(N2) AS(N3)     AS(N4)   AS(N5)         AS(N6)    AS(N7)    AS(N8)   AS(N9)    AS(N0)
+    AS(GRAVE) &none  &none      &kp HOME &kp PG_UP      &kp LEFT  &kp DOWN  &kp UP   &kp RIGHT AS(SQT)
+    &kp LALT  &none  &none      &kp END  &kp PG_DN      AS(MINUS) AS(EQUAL) AS(LBKT) AS(RBKT)  AS(BSLH)
+                     &kp LSHIFT &kp LGUI &kp LCTRL      &kp LALT  &none     &kp DEL
+            >;
+        };
+        function_layer {
+            bindings = <
+    &kp F1     &kp F2 &kp F3 &kp F4 &kp F5          &kp F6 &kp F7 &kp F8  &kp F9  &kp LG(LS(N4))
+    &bt BT_NXT &to 0  &none  &none  &kp C_VOL_UP    &none  &none  &kp F10 &kp F11 &kp F12
+    &bt BT_PRV &to 1  &none  &none  &kp C_VOL_DN    &none  &none  &none   &none   &none
+                      &none  &none  &none           &none  &none  &none
+            >;
+        };
+	};
+};

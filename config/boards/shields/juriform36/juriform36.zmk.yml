@@ -1,0 +1,13 @@
+file_format: "1"
+id: juriform36
+name: juriForm36
+type: shield
+url: https://github.com/jurica/juriform36
+requires: [pro_micro]
+exposes: [i2c_oled]
+features:
+  - keys
+  - display
+siblings:
+  - juriform36_left
+  - juriform36_right

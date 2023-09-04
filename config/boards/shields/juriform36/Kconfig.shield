@@ -1,0 +1,9 @@
+# Copyright (c) 2023 The ZMK Contributors
+# SPDX-License-Identifier: MIT
+
+config SHIELD_JURIFORM36_LEFT
+    def_bool $(shields_list_contains,juriform36_left)
+
+config SHIELD_JURIFORM36_RIGHT
+    def_bool $(shields_list_contains,juriform36_right)
+

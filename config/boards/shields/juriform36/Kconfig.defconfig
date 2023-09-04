@@ -1,0 +1,19 @@
+# Copyright (c) 2023 The ZMK Contributors
+# SPDX-License-Identifier: MIT
+
+if SHIELD_JURIFORM36_LEFT
+
+config ZMK_KEYBOARD_NAME
+	default "juriform36"
+
+config ZMK_SPLIT_BLE_ROLE_CENTRAL
+	default y
+
+endif
+
+if SHIELD_JURIFORM36_LEFT || SHIELD_JURIFORM36_RIGHT
+
+config ZMK_SPLIT
+	default y
+
+endif

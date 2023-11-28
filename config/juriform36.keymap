@@ -205,10 +205,10 @@
         num_layer {
             label = "Numbers";
             bindings = <
-    AS(N1)    AS(N2) AS(N3)     AS(N4)   AS(N5)         AS(N6)    AS(N7)    AS(N8)   AS(N9)    AS(N0)
-    AS(GRAVE) &none  &none      &kp HOME &kp PG_UP      &kp LEFT  &kp DOWN  &kp UP   &kp RIGHT AS(SQT)
-    &kp LALT  &none  &none      &kp END  &kp PG_DN      AS(MINUS) AS(EQUAL) AS(LBKT) AS(RBKT)  AS(BSLH)
-                     &kp LGUI   &kp SPC  &kp TAB        &kp LALT  &none     &kp DEL
+    AS(N1)    AS(N2)  AS(N3)     AS(N4)   AS(N5)         AS(N6)    AS(N7)    AS(N8)   AS(N9)    AS(N0)
+    AS(GRAVE) &kp TAB &none      &kp HOME &kp PG_UP      &kp LEFT  &kp DOWN  &kp UP   &kp RIGHT AS(SQT)
+    &kp LALT  &none   &none      &kp END  &kp PG_DN      AS(MINUS) AS(EQUAL) AS(LBKT) AS(RBKT)  AS(BSLH)
+                      &kp LGUI   &kp SPC  &kp TAB        &kp LALT  &none     &kp DEL
             >;
         };
         function_layer {
